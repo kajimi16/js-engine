@@ -35,21 +35,21 @@ pub enum Numeric {
     BigInt(Box<BigInt>), //Bigint is a struct that represents a big integer, it is stored in a Box to avoid the size of the Token struct being too large
 }
 
-impl from<f64> for Numeric {
+impl From<f64> for Numeric {
     #[inline]
     fn from(value: f64) -> Self {
         Self::Rational(value)
     }
 }
 
-impl from<i32> for Numeric {
+impl From<i32> for Numeric {
     #[inline]
     fn from(value: i32) -> Self {
         Self::Integer(value)
     }
 }
 
-impl from<BigInt> for Numeric {
+impl From<BigInt> for Numeric {
     #[inline]
     fn from(value: BigInt) -> Self {
         Self::BigInt(Box::new(value))
