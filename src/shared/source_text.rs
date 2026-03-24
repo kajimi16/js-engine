@@ -1,3 +1,6 @@
+use std::default;
+const DEFAULT_CAPACITY: usize = 1024 * 4;
+
 /// source text, stored as UTF-16
 pub struct SourceText {
     text: Vec<u16>,
@@ -33,5 +36,10 @@ impl SourceText {
                     .expect("Invalid code point: code point is greater than 0x10FFFF"),
             );
         }
+    }
+}
+impl Default for SourceText {
+    fn default() -> Self {
+        Self::new_with_capacity(DEFAULT_CAPACITY)
     }
 }
